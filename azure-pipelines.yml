@@ -12,7 +12,7 @@ pool:
 steps:
 - task: Docker@2
   inputs:
-    containerRegistry: 'adoacr4641.azurecr.io'
+    containerRegistry: 'acrDemo'
     repository: 'ado-acr'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
