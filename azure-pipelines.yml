@@ -60,7 +60,7 @@ stages:
       displayName: Run Trivy Scan
       inputs:
         targetType: 'inline'
-        script: '/bin/trivy image --severity HIGH,CRITICAL,MEDIUM --ignore-unfixed $(containerRegistry)/$(imageRepository):$(tag)'
+        script: './bin/trivy image --severity HIGH,CRITICAL,MEDIUM --ignore-unfixed $(containerRegistry)/$(imageRepository):$(tag)'
     
     - task: Docker@2
       inputs:
