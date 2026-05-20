@@ -28,6 +28,20 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: Maven@4
+      inputs:
+        azureSubscription: 'Azure subscription 1(04b85423-6e7a-4d7a-9ad2-7eb1c4786117)'
+        mavenPomFile: 'pom.xml'
+        goals: 'clean package'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.17'
+        mavenVersionOption: 'Default'
+        mavenOptions: '-Xmx3072m'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
